@@ -1,0 +1,32 @@
+[
+    {
+      "name": "CountryA",
+      "region": "Asia",
+      "population": 120000000,
+      "capital": "CapitalA"
+    },
+    {
+      "name": "CountryB",
+      "region": "Europe",
+      "population": 65000000,
+      "capital": "CapitalB"
+    },
+    {
+      "name": "CountryC",
+      "region": "Africa",
+      "population": 95000000,
+      "capital": "CapitalC"
+    },
+    {
+      "name": "CountryD",
+      "region": "Americas",
+      "population": 350000000,
+      "capital": "CapitalD"
+    },
+    {
+      "name": "CountryE",
+      "region": "Oceania",
+      "population": 30000000,
+      "capital": "CapitalE"
+    }
+]
