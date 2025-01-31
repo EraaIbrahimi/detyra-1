@@ -1,4 +1,4 @@
-const filterCountries = (countries) => {
+/*const filterCountries = (countries) => {
     const filteredCountries = countries.filter(
       (country) => country.population > 50_000_000
     );
@@ -74,4 +74,55 @@ const filterCountries = (countries) => {
   // there was no need for functions you could make just declare const values
   // like const data  = fetch(data)
   // and then const result1 and so on
-  // we read the file from the top to the bottom so getting the main function at the top is better to know where the data comes from
+  // we read the file from the top to the bottom so getting the main function at the top is better to know where the data comes from*/
+
+
+  //improved:
+
+  const fetchCountriesData = async () => {
+    try {
+      const response = await fetch('data.json');
+      const countriesData = await response.json();
+      return countriesData;
+    } catch (error) {
+      console.log(error);
+    }
+  };
+  
+  const countriesData = await fetchCountriesData();
+  
+  // - **Filter** out countries with a population greater than 50 million and log the resulting array.
+  const countriesWithPopulationOver50M = countriesData.filter(
+    (country) => country.population > 50_000_000
+  );
+  console.log('countriesWithPopulationOver50M', countriesWithPopulationOver50M);
+  
+  // - **Sort** all countries by population in descending order and log the sorted array.
+  const countriesByDescendingOrder = countriesData.sort(
+    (a, b) => b.population - a.population
+  );
+  console.log('countriesByDescendingOrder', countriesByDescendingOrder);
+  // countriesByDescendingOrder.forEach((country) =>
+  //   console.log(country.population.toLocaleString())
+  // );
+  
+  // - **Map** the data to create a new array of strings in the format:
+  // `"<CountryName> in <Region> has <Population> people."`
+  // Log this array.
+  const countriesSummaries = countriesData.map((country) => {
+    return `${country.name} in ${country.region} has ${country.population} people.`;
+  });
+  console.log(countriesSummaries);
+  
+  // - **Find** the country with the largest population and log its name.
+  const largestCountryByPopulation = countriesData.reduce((acc, curr) => {
+    return curr.population > acc ? curr : acc;
+  });
+  console.log(largestCountryByPopulation);
+  
+  // - **Compute** the total population across all countries and log the sum.
+  const totalPopulation = countriesData.reduce(
+    (acc, curr) => acc + curr.population,
+    0
+  );
+  console.log(totalPopulation);
